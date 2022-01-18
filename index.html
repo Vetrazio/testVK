@@ -43,13 +43,13 @@
 <body>
 	<div id="gameContainer">
 		<canvas id="unity-canvas" data-pixel-art=""></canvas>
-		<script src="Build/4.loader.js"></script>
+		<script src="Build/5.loader.js"></script>
 		<script>
 			var canvas = document.querySelector("#unity-canvas");
 			var config = {
-				dataUrl: "Build/4.data",
-				frameworkUrl: "Build/4.framework.js",
-				codeUrl: "Build/4.wasm",
+				dataUrl: "Build/5.data",
+				frameworkUrl: "Build/5.framework.js",
+				codeUrl: "Build/5.wasm",
 				streamingAssetsUrl: "StreamingAssets",
 				companyName: "DiscoDancers",
 				productName: "World of Words",
@@ -98,7 +98,6 @@
 			window.addEventListener('resize', onResize);
 			onResize();
 		</script>
-		
 		<script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
 
     <script type="text/javascript">
@@ -122,6 +121,13 @@
 	   
 	   function addto(){
 	   vkBridge.send("VKWebAppAddToFavorites");
+	   }
+	   
+	   function post(){
+	   vkBridge.send("VKWebAppShowWallPostBox", {
+		"message": "Я играю в слова. Давай со мной!",
+		"attachments": "https://vk.com/app8050463_693539920"
+		});
 	   }
 
       function getUserData(){
