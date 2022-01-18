@@ -43,13 +43,13 @@
 <body>
 	<div id="gameContainer">
 		<canvas id="unity-canvas" data-pixel-art=""></canvas>
-		<script src="Build/2.loader.js"></script>
+		<script src="Build/3.loader.js"></script>
 		<script>
 			var canvas = document.querySelector("#unity-canvas");
 			var config = {
-				dataUrl: "Build/2.data",
-				frameworkUrl: "Build/2.framework.js",
-				codeUrl: "Build/2.wasm",
+				dataUrl: "Build/3.data",
+				frameworkUrl: "Build/3.framework.js",
+				codeUrl: "Build/3.wasm",
 				streamingAssetsUrl: "StreamingAssets",
 				companyName: "DiscoDancers",
 				productName: "World of Words",
@@ -112,6 +112,12 @@
           unityI.SendMessage('VKSDK', 'AuthenticateSuccess', JSON.stringify(_info));
         });
       }
+	  
+	   function invite(){
+	   vkBridge.send("VKWebAppShowInviteBox", {})
+         .then(data => console.log(data.success))  
+        .catch(error => console.log(error));
+	   }
 
       function getUserData(){
         vkBridge.send("VKWebAppStorageGet",{"keys":["_save"]}).then(data =>{
@@ -138,6 +144,7 @@
 
 
     </script>
+		
 	</div>
 </body>
 
